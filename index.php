@@ -38,16 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['letra'])) {
 
 // Comprobar si se ha ganado o perdido
 if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
+    $_SESSION['palabraGanada'] = $_SESSION['palabra'];
     //echo "¡Enhorabuena! Has ganado :) La palabra era: " . $_SESSION['palabra'] . "<br>";
-    session_destroy();
+    //session_destroy();
     header("Location: win.php");
     //echo '<a href="">Jugar de nuevo</a>';
     exit();
 } elseif ($_SESSION['vidas'] <= 0) {
-    echo "Lo siento, has perdido :( La palabra era: " . $_SESSION['palabra'] . "<br>";
-    session_destroy();
+    $_SESSION['palabraPerdida'] = $_SESSION['palabra'];
+   // echo "Lo siento, has perdido :( La palabra era: " . $_SESSION['palabra'] . "<br>";
+    //session_destroy();
     //echo '<a href="">Jugar de nuevo</a>';
-    header("Location: win.php");
+    header("Location: lose.php");
     exit();
 }
 ?>
@@ -57,6 +59,7 @@ if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
 <head>
     <meta charset="UTF-8">
     <title>Ahorcado</title>
+    
 </head>
 <body>
     <h1>Juego del Ahorcado</h1>

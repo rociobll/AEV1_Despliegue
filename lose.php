@@ -2,11 +2,11 @@
 session_start();
 
 // Destruir la sesión para reiniciar el juego
-if (isset($_SESSION['palabraGanada'])) {
-    $palabraGanada = $_SESSION['palabraGanada'];
+if (isset($_SESSION['palabraPerdida'])) {
+    $palabraPerdida = $_SESSION['palabraPerdida'];
     session_destroy();
 } else {
-    $palabraGanada = 'No disponible';
+    $palabraPerdida = 'No disponible';
 }
 
 ?>
@@ -15,14 +15,13 @@ if (isset($_SESSION['palabraGanada'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ganador</title>
+    <title>Has perdido</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="resultado ganado">
-        <h1>¡Enhorabuena!</h1>
-        <p>Has ganado!!! :)</p>
-        <p>La palabra era: <?php echo $_SESSION['palabraGanada']; ?></p>
+    <div class="resultado perdido">
+        <h1>Lo siento, has perdido :(</h1>
+        <p>La palabra era: <?php echo $_SESSION['palabraPerdida']; ?></p>
         <a href="index.php"><button>Jugar de nuevo</button></a>
     </div>
 </body>
